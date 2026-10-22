@@ -1,0 +1,31 @@
+#vehicle-display{font-size:12px;color:var(--lime);border:1px solid var(--line);border-radius:12px;width:100%;padding:8px 3px}
+.rail{overflow-y:auto}.rail-links{flex-shrink:0}.avatar{flex-shrink:0}
+#vehicle-banner{height:40px;display:flex;align-items:center;gap:18px;padding:0 24px;background:var(--panel);border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+#vehicle-banner strong{color:var(--lime);white-space:nowrap}
+#vehicle-capabilities{display:grid;grid-template-columns:minmax(120px,1fr) 1.5fr;gap:12px;font-size:14px;line-height:1.5}#vehicle-capabilities dd{margin:0;color:var(--muted);overflow-wrap:anywhere}
+.vehicle-options{display:flex;gap:12px;flex-wrap:wrap}#vehicle-dialog{max-width:720px}#vehicle-address{font-size:13px}
+html:not([data-display="standard"]) .app{height:100vh;height:100dvh;min-height:480px}
+html:not([data-display="standard"]) .topbar{height:72px}
+html:not([data-display="standard"]) .workspace{height:calc(100% - 112px);display:grid;grid-template-columns:minmax(0,1fr) 360px}
+html:not([data-display="standard"]) .rail{width:100px;padding:12px 8px;position:static}
+html:not([data-display="standard"]) main{margin-left:0}
+html:not([data-display="standard"]) .rail-links{margin-top:20px;gap:10px}
+html:not([data-display="standard"]) .map-shell{height:100%;min-height:0}
+html:not([data-display="standard"]) .map-title,html:not([data-display="standard"]) .tagline{display:none}
+html:not([data-display="standard"]) .community{min-height:0;padding:20px;overscroll-behavior:contain}
+html:not([data-display="standard"]) button{min-height:56px}
+html:not([data-display="standard"]) .peer-text strong{font-size:16px}
+html:not([data-display="standard"]) .peer-text small,html:not([data-display="standard"]) .peer-distance,html:not([data-display="standard"]) .quick-replies button{font-size:13px}
+html:not([data-display="standard"]) dialog{max-width:720px;font-size:16px;max-height:90vh}
+html:not([data-display="standard"]) dialog input,html:not([data-display="standard"]) dialog select{min-height:56px;font-size:16px}
+html[data-display="compact"] .workspace{grid-template-columns:minmax(0,1fr) 290px}
+html[data-display="compact"] .rail{width:80px}
+html[data-display="compact"] .community{padding:14px}
+html[data-display="compact"] .map-bottom .location-label,html[data-display="compact"] .demo-tag{display:none}
+html[data-display="compact"] .destination{width:100%;font-size:12px}
+html[data-display="portrait"] .workspace{display:flex;flex-direction:column;overflow-y:auto}
+html[data-display="portrait"] .map-shell{height:55vh;min-height:420px;flex-shrink:0}
+html[data-display="portrait"] .community{overflow:visible;flex-shrink:0}
+@media(max-width:800px){html:not([data-display="standard"]) .workspace{display:flex;flex-direction:column;overflow:auto}html:not([data-display="standard"]) .map-shell{min-height:420px;flex-shrink:0}html:not([data-display="standard"]) .community{overflow:visible;flex-shrink:0}#vehicle-banner span{display:none}}
+@media(max-height:600px){html:not([data-display="standard"]) .weather-chip{display:none}html:not([data-display="standard"]) .map-top{top:12px}html:not([data-display="standard"]) .map-tools{bottom:100px}html:not([data-display="standard"]) .speed-panel{bottom:90px}html:not([data-display="standard"]) .map-bottom{bottom:12px}}
+html:not([data-display="standard"]) .weather-chip{top:90px;bottom:auto;right:24px;max-width:240px}
