@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+<defs><pattern id="blocks" width="250" height="210" patternUnits="userSpaceOnUse"><rect width="250" height="210" fill="#e4e8de"/><rect x="14" y="14" width="220" height="180" rx="12" fill="#d1d9cf" stroke="#c8d1c6" stroke-width="2"/><path d="M32 35h92v65H32zM140 35h73v65h-73zM32 116h181v58H32z" fill="#dde2d8"/></pattern><pattern id="water" width="42" height="42" patternUnits="userSpaceOnUse"><rect width="42" height="42" fill="#bad2d1"/><path d="m0 20 10-2 12 4 10-2" stroke="#acc8c6" fill="none" opacity=".5"/></pattern></defs>
+<rect width="1600" height="1200" fill="url(#blocks)"/>
+<path d="M1150 0H1600V1200h-480l60-210-35-235 60-220-30-240Z" fill="url(#water)"/>
+<path d="M1090 0h60l25 295 30 240-60 220 35 235-60 210h-75l50-220-30-230 65-220-30-230Z" fill="#c1d4ad"/>
+<path d="M800-30V760Q800 875 680 875H-30M800 770q0 105 105 105h220M800 770v460" fill="none" stroke="#b8c3b9" stroke-width="330"/>
+<path d="M800-30V760Q800 875 680 875H-30M800 770q0 105 105 105h220M800 770v460" fill="none" stroke="#f2f4ed" stroke-width="314"/>
+<path d="M800-30V690M800 1040v190M-30 875H600M1000 875h125" fill="none" stroke="#d6dbc9" stroke-width="4"/>
+<path d="M720-30V690M880-30V690M720 1040v190M880 1040v190M-30 797H600M-30 954H600" fill="none" stroke="#d3d9cc" stroke-width="3" stroke-dasharray="22 22"/>
+<path d="M610 0v650M990 0v650M610 1080v150M990 1080v150" stroke="#b6cba6" stroke-width="10"/>
+<path d="M659 730h282M659 742h282M659 754h282M659 766h282M659 778h282M659 790h282M645 1030h300M645 1042h300M645 1054h300" stroke="#d4dace" stroke-width="6"/>
+<g fill="#a9c399" stroke="#9fb88e" stroke-width="2"><circle cx="1038" cy="60" r="20"/><circle cx="1050" cy="160" r="18"/><circle cx="1048" cy="270" r="23"/><circle cx="1060" cy="390" r="20"/><circle cx="1070" cy="510" r="25"/><circle cx="1045" cy="640" r="20"/><circle cx="1040" cy="1120" r="24"/><circle cx="560" cy="1100" r="20"/><circle cx="530" cy="1035" r="17"/><circle cx="565" cy="470" r="18"/><circle cx="560" cy="590" r="23"/></g>
+<g fill="#8e9e91" font-family="Arial,sans-serif" font-size="18" letter-spacing="2"><text transform="translate(844 280) rotate(90)">THE EMBARCADERO</text><text x="260" y="914">MARKET STREET</text><text transform="translate(1360 430) rotate(90)" fill="#8eb0ad">SAN FRANCISCO BAY</text></g>
+<g font-family="Arial,sans-serif" font-size="14" fill="#89998c"><text x="310" y="568">FERRY PLAZA</text><text x="1090" y="1060">WATERFRONT</text></g>
+</svg>
