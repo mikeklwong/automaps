@@ -1,0 +1,9 @@
+{
+  "name": "automaps",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Privacy-first nearby driver chat, maps, and a native CarPlay foundation",
+  "scripts": { "start": "node server/index.mjs", "test": "node --test test/*.test.mjs" },
+  "engines": { "node": ">=22" }
+}
