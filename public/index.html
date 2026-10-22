@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101b22"><title>Automaps — A little closer.</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="vendor/leaflet.css"><link rel="stylesheet" href="style.css">
+  <script defer src="vendor/leaflet.js"></script><script type="module" src="app.js"></script><script type="module" src="extras.js"></script><link rel="stylesheet" href="extras.css">
+  <link rel="stylesheet" href="vehicle.css"><script type="module" src="vehicle.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="rail" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="Automaps home"><svg viewBox="0 0 36 36"><path d="M7 28 16 7h5l9 21h-7l-5-13-5 13Z"/><path d="M15 25h7"/></svg></a>
+    <div class="rail-links"><button id="nav-map" class="rail-button selected" aria-label="Map view"><span>◈</span><small>Explore</small></button><button id="nav-list" class="rail-button" aria-label="Nearby list"><span>≋</span><small>Nearby</small></button><button id="nav-report" class="rail-button" aria-label="Report road condition"><span>△</span><small>Report</small></button></div>
+    <button id="nav-profile" class="avatar" aria-label="Edit your profile">G</button>
+  </aside>
+  <main>
+    <header class="topbar"><div><span class="wordmark">automaps<span>®</span></span><span class="tagline">A little closer.</span></div><div class="top-actions"><span id="clock">09:41</span><button id="mode-button" class="pill"><span class="ghost-icon">◌</span><span id="mode-label">Ghost mode</span><span class="chevron">⌄</span></button><button id="connect" class="live-button">Go live <span>↗</span></button></div></header>
+    <section class="workspace">
+      <div class="map-shell">
+        <div id="map" aria-label="Interactive road map"></div>
+        <div class="map-top"><button id="destination-button" class="destination"><span class="search-icon">⌕</span><span>Where are we headed?</span><kbd>↗</kbd></button><span id="environment" class="demo-tag">DEMO DRIVE · SAN FRANCISCO</span></div>
+        <div class="map-title"><span class="eyebrow">YOUR ROAD. YOUR PEOPLE.</span><h1>Good company.<br>Every mile.</h1><p id="map-description">Meet the drivers just around you.</p></div>
+        <div id="route-card" class="route-card" hidden><span class="turn-icon">↱</span><div><strong id="route-title">Route ready</strong><p id="route-detail"></p></div><button id="cancel-route" aria-label="Clear route">×</button></div>
+        <div class="map-tools"><button id="zoom-in" aria-label="Zoom in">+</button><button id="zoom-out" aria-label="Zoom out">−</button><button id="recenter" aria-label="Center map on your car">⌖</button></div>
+        <div class="speed-panel"><div><strong id="speed">0</strong><span>MPH</span></div><div class="speed-limit"><small>SPEED<br>LIMIT</small><strong id="limit">25</strong></div><span id="speed-source">Simulated</span></div>
+        <div class="map-bottom"><div class="location-label"><span class="location-dot"></span><div><strong id="location-name">The Embarcadero</strong><span id="location-status">San Francisco, CA · Demo location</span></div></div><button id="report-button" class="report-button">△ <span>Report</span></button></div>
+        <div id="list-view" class="list-view" hidden><div class="list-heading"><span class="eyebrow">AROUND YOUR CAR</span><h1>A familiar road.<br>A few new faces.</h1><p>Nearby drivers refresh every 2 seconds.</p></div><div id="driver-list"></div></div>
+      </div>
+      <aside class="community">
+        <div class="community-header"><div class="eyebrow">THE NEIGHBORHOOD</div><div class="title-row"><h2>Within reach</h2><span id="peer-count" class="count">3</span></div><div class="scan-status"><span class="pulse"></span><span id="scan-label">Scanning every 2 seconds</span></div></div>
+        <div class="range-row"><span>Chat radius</span><div class="range-options" role="group" aria-label="Chat radius"><button data-radius="10">10 ft</button><button data-radius="20">20 ft</button><button data-radius="30" class="active">30 ft</button></div></div>
+        <div id="accuracy-note" class="accuracy-note" hidden></div>
+        <div id="peers" class="peers"></div>
+        <div class="chat-section"><div class="chat-heading"><h3 id="chat-title">Say hello</h3><span class="tiny-label" id="chat-status">NEARBY CHAT</span></div><p id="chat-hint">A small gesture goes a long way.</p><div id="messages" class="messages" aria-live="polite"></div><div id="quick-replies" class="quick-replies"></div><form id="message-form" class="message-form"><input id="message" aria-label="Message" maxlength="240" placeholder="Message while parked…"><button aria-label="Send message">↑</button></form><div class="chat-actions"><button id="block-driver">Block driver</button><button id="flag-message">Report last message</button></div></div>
+        <div class="privacy-card"><div class="privacy-symbol">◌</div><div><strong id="privacy-title">You’re a little mysterious.</strong><p id="privacy-copy">Ghost mode hides your name and car. Your location is shared only in live mode.</p></div></div>
+        <footer><span class="connection-dot"></span><span id="connection-status">Demo · no location shared</span></footer>
+      </aside>
+    </section>
+  </main>
+</div>
+<dialog id="profile-dialog"><form id="profile-form"><div class="dialog-head"><div><span class="eyebrow">YOUR PRESENCE</span><h2>How you show up.</h2></div><button type="button" data-close="profile-dialog" aria-label="Close profile">×</button></div><p>Ghost hides your identity from nearby drivers. It does not hide your location from the service when live.</p><div class="mode-options"><label><input type="radio" name="mode" value="ghost" checked><strong>◌ Ghost</strong><span>Anonymous by default</span></label><label><input type="radio" name="mode" value="active"><strong>● Active</strong><span>Let your personality through</span></label></div><div id="active-fields" hidden><label>Display name<input name="name" maxlength="24" placeholder="e.g. Sunday Driver"></label><div class="field-row"><label>Car make<input name="make" maxlength="30" placeholder="e.g. Toyota"></label><label>Car model<input name="model" maxlength="30" placeholder="e.g. Prius"></label></div><p class="fine-print">Keep names friendly. Basic word filtering is enabled; it is not comprehensive moderation.</p></div><button class="primary" type="submit">Save presence</button></form></dialog>
+<dialog id="route-dialog"><div class="dialog-head"><div><span class="eyebrow">LET’S GET THERE</span><h2>Your next turn.</h2></div><button data-close="route-dialog" aria-label="Close directions">×</button></div><p>Search one location at a time, then choose a result. Coordinates are also accepted as “lat, lng”.</p><form id="search-form"><label>Location to set<select id="search-target"><option value="end">Destination</option><option value="start">Starting point</option></select></label><div class="field-row"><input id="place-query" aria-label="Place or address" placeholder="Address, place, or coordinates" required><button class="primary">Search</button></div></form><div id="search-results"></div><div class="route-endpoints"><p><span>FROM</span><strong id="start-name">Demo location</strong></p><p><span>TO</span><strong id="end-name">Choose a destination</strong></p></div><button id="use-location" class="secondary">Use current position as start</button><button id="build-route" class="primary" disabled>Find driving route ↗</button><div class="external-links"><a id="apple-link" target="_blank" rel="noopener" hidden>Open in Apple Maps ↗</a><a id="google-link" target="_blank" rel="noopener" hidden>Open in Google Maps ↗</a></div><p class="fine-print">OpenStreetMap + OSRM. No live traffic. Searches are sent to the configured map provider.</p></dialog>
+<dialog id="report-dialog"><div class="dialog-head"><div><span class="eyebrow">LOOK OUT FOR EACH OTHER</span><h2>What’s on the road?</h2></div><button data-close="report-dialog" aria-label="Close report">×</button></div><p>Reports are pinned to your current location and expire automatically. Community reports are unverified.</p><div class="report-options"><button data-report="hazard"><span>△</span>Road hazard</button><button data-report="camera"><span>▣</span>Red-light camera</button><button data-report="police"><span>◇</span>Police presence</button></div></dialog>
+<dialog id="live-dialog"><div class="dialog-head"><div><span class="eyebrow">LIVE LOCATION</span><h2>Connect to your road.</h2></div><button data-close="live-dialog" aria-label="Close live connection">×</button></div><p>Your GPS location, accuracy and speed will be sent to this Automaps server. Confirmed nearby drivers can see your position and message you. Ghost mode hides your name and car, not your position.</p><p>Presence expires after 12 seconds without a fresh fix. Messages expire after 5 minutes. Stop live mode to leave immediately. Map tiles reveal the viewed area to OpenStreetMap.</p><p class="fine-print">GPS may be too imprecise for a 10–30 ft radius. Automaps is a development prototype; do not operate this browser interface while driving.</p><button id="confirm-live" class="primary">Share location & connect</button></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+</body></html>
